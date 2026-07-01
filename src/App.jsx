@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './components/Header';
 import TodoInput from './components/TodoInput';
 import FilterButtons from './components/Filterbuttons';
+import TodoItem from './components/TodoItem';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Header />
         <TodoInput/>
         <FilterButtons />
+        <TodoItem />
       </div>
 
     </main>
