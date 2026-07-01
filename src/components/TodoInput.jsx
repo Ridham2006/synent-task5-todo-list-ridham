@@ -1,0 +1,59 @@
+import { Plus } from "lucide-react";
+
+function TodoInput() {
+  return (
+    <section className="mb-8">
+
+      <div className="flex gap-4">
+
+        <input
+          type="text"
+          placeholder="Enter your next task..."
+          className="
+            flex-1
+            px-5
+            py-4
+            rounded-2xl
+            bg-slate-900
+            border
+            border-slate-700
+            text-white
+            placeholder:text-slate-500
+            outline-none
+            transition-all
+            duration-300
+            focus:border-violet-500
+            focus:ring-4
+            focus:ring-violet-500/20
+          "
+        />
+
+        <button
+          className="
+            flex
+            items-center
+            gap-2
+            px-6
+            rounded-2xl
+            bg-violet-600
+            text-white
+            font-semibold
+            transition-all
+            duration-300
+            hover:bg-violet-500
+            hover:scale-105
+            hover:shadow-lg
+            hover:shadow-violet-500/40
+          "
+        >
+          <Plus size={20} />
+          Add Task
+        </button>
+
+      </div>
+
+    </section>
+  );
+}
+
+export default TodoInput;
