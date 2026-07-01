@@ -1,10 +1,11 @@
 import { Pencil, Trash2 } from "lucide-react";
 
-function TodoItem() {
+function TodoItem({ todo }) {
+
   return (
+
     <div
       className="
-      group
       bg-slate-900
       border
       border-slate-800
@@ -26,45 +27,30 @@ function TodoItem() {
 
         <h3 className="text-white text-lg font-semibold">
 
-          Learn React
+          {todo.text}
 
         </h3>
-
-        <p className="text-slate-400 mt-1">
-
-          Build modern React applications.
-
-        </p>
 
       </div>
 
       <div className="flex gap-3">
 
-        <button
-          className="
-          p-2
-          rounded-xl
-          hover:bg-violet-600
-          transition
-          "
-        >
+        <button className="p-2 rounded-xl hover:bg-violet-600 transition">
+
           <Pencil size={18} />
+
         </button>
 
-        <button
-          className="
-          p-2
-          rounded-xl
-          hover:bg-red-600
-          transition
-          "
-        >
+        <button className="p-2 rounded-xl hover:bg-red-600 transition">
+
           <Trash2 size={18} />
+
         </button>
 
       </div>
 
     </div>
+
   );
 }
 

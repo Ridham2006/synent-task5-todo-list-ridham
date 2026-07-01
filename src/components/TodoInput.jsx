@@ -1,13 +1,17 @@
 import { Plus } from "lucide-react";
 
-function TodoInput() {
+function TodoInput({ task, setTask, addTask }) {
+
   return (
+
     <section className="mb-8">
 
       <div className="flex gap-4">
 
         <input
           type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
           placeholder="Enter your next task..."
           className="
             flex-1
@@ -29,6 +33,7 @@ function TodoInput() {
         />
 
         <button
+          onClick={addTask}
           className="
             flex
             items-center
@@ -53,6 +58,7 @@ function TodoInput() {
       </div>
 
     </section>
+
   );
 }
 
