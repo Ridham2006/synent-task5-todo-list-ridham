@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import TodoInput from "./components/TodoInput";
 import FilterButtons from "./components/FilterButtons";
@@ -16,6 +16,20 @@ function App() {
 
   const [editText, setEditText] = useState("");
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+localStorage.setItem(
+    "todos",
+    JSON.stringify(todos)
+);
+
+  const savedTodos = localStorage.getItem("todos");
+
+  if (savedTodos) {
+    setTodos(JSON.parse(savedTodos));
+  }
+
+}, [todos]);
 
   const addTask = () => {
 
