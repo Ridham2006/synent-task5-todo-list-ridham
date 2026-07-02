@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import TodoInput from "./components/TodoInput";
 import FilterButtons from "./components/FilterButtons";
 import TodoList from "./components/TodoList";
-
+import TodoItem from "./components/TodoItem";
 
 function App() {
 
@@ -26,7 +26,14 @@ function App() {
     setTodos([...todos, newTodo]);
 
     setTask("");
+
   };
+      const deleteTask=(id)=>{
+      const updatetodos = todos.filter((todos)=>{
+        return todos.id!==id;
+      })
+      setTodos(updatetodos)
+    };
 
   return (
     <main className="min-h-screen bg-slate-950">
@@ -42,9 +49,11 @@ function App() {
 
         <FilterButtons />
 
-        <TodoList todos={todos} />
+        <TodoList 
+    todos={todos}
+    deleteTask={deleteTask} />
 
-   
+    
 
       </div>
     </main>

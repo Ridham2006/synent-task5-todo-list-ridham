@@ -1,6 +1,6 @@
 import { Pencil, Trash2 } from "lucide-react";
 
-function TodoItem({ todo }) {
+function TodoItem({ todo,deleteTask }) {
 
   return (
 
@@ -40,9 +40,15 @@ function TodoItem({ todo }) {
           <Pencil size={18} />
 
         </button>
-
-        <button className="p-2 rounded-xl hover:bg-red-600 transition">
-
+      <button className="p-2 rounded-xl hover:bg-red-600 transition"
+        className="
+        p-2
+        rounded-xl
+        hover:bg-red-600
+        transition
+        "
+         onClick={() => deleteTask(todo.id)}
+         >
           <Trash2 size={18} />
 
         </button>
