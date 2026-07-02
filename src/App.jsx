@@ -3,13 +3,16 @@ import Header from "./components/Header";
 import TodoInput from "./components/TodoInput";
 import FilterButtons from "./components/FilterButtons";
 import TodoList from "./components/TodoList";
-import TodoItem from "./components/TodoItem";
 
 function App() {
 
   const [task, setTask] = useState("");
 
   const [todos, setTodos] = useState([]);
+
+  const [editingId, setEditingId] = useState(null);
+
+  const [editText, setEditText] = useState("");
 
   const addTask = () => {
 
@@ -56,6 +59,48 @@ function App() {
 
 };
 
+const startEditing = (todo) => {
+
+  setEditingId(todo.id);
+
+  setEditText(todo.text);
+
+};
+
+const saveTask = (id) => {
+
+  if (editText.trim() === "") return;
+
+  const updatedTodos = todos.map((todo) => {
+
+    if (todo.id === id) {
+
+      return {
+        ...todo,
+        text: editText,
+      };
+
+    }
+
+    return todo;
+
+  });
+
+  setTodos(updatedTodos);
+
+  setEditingId(null);
+
+  setEditText("");
+
+};
+
+const cancelEditing = () => {
+
+  setEditingId(null);
+
+  setEditText("");
+
+};
   return (
     <main className="min-h-screen bg-slate-950">
       <div className="max-w-4xl mx-auto py-16 px-6">
@@ -71,9 +116,17 @@ function App() {
         <FilterButtons />
 
         <TodoList 
-    todos={todos}
-    deleteTask={deleteTask}
-    toggleComplete={toggleComplete} />
+              todos={todos}
+             deleteTask={deleteTask}
+             toggleComplete={toggleComplete}
+             editingId={editingId}
+             editText={editText}
+             setEditText={setEditText}
+             startEditing={startEditing}
+             saveTask={saveTask}
+             cancelEditing={cancelEditing} />
+
+    
 
     
 

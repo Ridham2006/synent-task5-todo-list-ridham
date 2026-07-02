@@ -18,11 +18,11 @@ function TodoInput({ task, setTask, addTask }) {
             px-5
             py-4
             rounded-2xl
-            bg-slate-900
+            bg-slate-800
             border
             border-slate-700
             text-white
-            placeholder:text-slate-500
+            placeholder:text-slate-400
             outline-none
             transition-all
             duration-300
