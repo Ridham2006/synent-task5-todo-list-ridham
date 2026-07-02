@@ -1,4 +1,5 @@
 import { Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 function TodoInput({ task, setTask, addTask }) {
 
@@ -32,7 +33,17 @@ function TodoInput({ task, setTask, addTask }) {
           "
         />
 
-        <button
+        <motion.button
+
+       
+whileTap={{
+  scale: 0.95,
+}}
+
+transition={{
+  type: "spring",
+  stiffness: 300,
+}}
           onClick={addTask}
           className="
             flex
@@ -53,7 +64,7 @@ function TodoInput({ task, setTask, addTask }) {
         >
           <Plus size={20} />
           Add Task
-        </button>
+        </motion.button>
 
       </div>
 

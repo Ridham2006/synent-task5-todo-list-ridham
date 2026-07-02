@@ -6,8 +6,11 @@ import {
   Check,
   X,
 } from "lucide-react";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
-function TodoItem({   todo,
+function TodoItem({   
+  todo,
   deleteTask,
   toggleComplete,
   editingId,
@@ -18,7 +21,23 @@ function TodoItem({   todo,
   cancelEditing, }) {
 
   return (
-    <div
+   <motion.div
+   layout
+  initial={{
+    opacity: 0,
+  }}
+  animate={{
+    opacity: 1,
+    
+  }}
+  exit={{
+    opacity: 0,
+    x: -120,
+    scale: 0.8,
+    
+  }}
+  
+ 
       className={`
         rounded-2xl
         p-5
@@ -157,23 +176,23 @@ function TodoItem({   todo,
   )
 }
 
-        <button
+        <motion.button
   onClick={() => deleteTask(todo.id)}
   className="
     p-2
     rounded-xl
     hover:bg-red-600
-    transition-all
+    transition-shadow
     duration-300
     hover:scale-110
   "
 >
   <Trash2 size={18} />
-</button>
+</motion.button>
 
       </div>
 
-    </div>
+    </motion.div>
   );
 }
 

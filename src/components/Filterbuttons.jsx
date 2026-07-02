@@ -50,7 +50,6 @@ function FilterButtons({ filter, setFilter }) {
             px-5
             py-2
             rounded-full
-            transition-all
             duration-300
             hover:scale-105
             ${

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 function Stats({ todos }) {
 
   const totalTasks = todos.length;
@@ -10,7 +11,8 @@ function Stats({ todos }) {
 
   return (
 
-    <section className="mt-8">
+    <motion.section
+    className="mt-8 mb-4">
 
       <div className="grid grid-cols-3 gap-4">
 
@@ -91,7 +93,7 @@ function Stats({ todos }) {
 
       </div>
 
-    </section>
+    </motion.section>
 
   );
 }

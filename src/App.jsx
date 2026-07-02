@@ -144,6 +144,7 @@ const filteredTodos = todos.filter((todo) => {
           setTask={setTask}
           addTask={addTask}
         />
+        <Stats todos={todos} />
 
        <FilterButtons
   filter={filter}
@@ -154,10 +155,12 @@ const filteredTodos = todos.filter((todo) => {
   todos.length === 0 ? (
 
     <EmptyState />
+    
 
   ) : (
+    
+<>
 
-    <>
       <TodoList
         todos={filteredTodos}
         deleteTask={deleteTask}
@@ -169,12 +172,10 @@ const filteredTodos = todos.filter((todo) => {
         saveTask={saveTask}
         cancelEditing={cancelEditing}
       />
-
-      <Stats todos={todos} />
-    </>
-
+      </>
   )
 }
+
 
       </div>
     </main>
