@@ -1,6 +1,6 @@
 function EmptyState() {
   return (
-    <motion.div className="text-center py-20">
+    <div className="text-center py-20">
 
       <h2 className="text-2xl font-bold text-slate-300">
         No Tasks Yet
@@ -10,7 +10,7 @@ function EmptyState() {
         Add your first task to get started.
       </p>
 
-    </motion.div>
+    </div>
   );
 }
 
