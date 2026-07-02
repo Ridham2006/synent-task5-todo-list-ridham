@@ -10,26 +10,22 @@ function App() {
 
   const [task, setTask] = useState("");
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
 
   const [editingId, setEditingId] = useState(null);
 
   const [editText, setEditText] = useState("");
+
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-localStorage.setItem(
-    "todos",
-    JSON.stringify(todos)
-);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
-  const savedTodos = localStorage.getItem("todos");
-
-  if (savedTodos) {
-    setTodos(JSON.parse(savedTodos));
-  }
-
-}, [todos]);
 
   const addTask = () => {
 
