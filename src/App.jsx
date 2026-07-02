@@ -4,6 +4,7 @@ import TodoInput from "./components/TodoInput";
 import FilterButtons from "./components/FilterButtons";
 import TodoList from "./components/TodoList";
 import EmptyState from "./components/EmptyState";
+import Stats from "./components/Stats";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   const [editText, setEditText] = useState("");
+  const [filter, setFilter] = useState("all");
 
   const addTask = () => {
 
@@ -102,6 +104,25 @@ const cancelEditing = () => {
   setEditText("");
 
 };
+
+const filteredTodos = todos.filter((todo) => {
+
+    if(filter==="active"){
+
+        return !todo.completed;
+
+    }
+
+    if(filter==="completed"){
+
+        return todo.completed;
+
+    }
+
+    return true;
+
+});
+
   return (
     <main className="min-h-screen bg-slate-950">
       <div className="max-w-4xl mx-auto py-16 px-6">
@@ -114,22 +135,36 @@ const cancelEditing = () => {
           addTask={addTask}
         />
 
-        <FilterButtons />
+       <FilterButtons
+  filter={filter}
+  setFilter={setFilter}
+/>
 
-        <TodoList 
-              todos={todos}
-             deleteTask={deleteTask}
-             toggleComplete={toggleComplete}
-             editingId={editingId}
-             editText={editText}
-             setEditText={setEditText}
-             startEditing={startEditing}
-             saveTask={saveTask}
-             cancelEditing={cancelEditing} />
+       {
+  todos.length === 0 ? (
 
-    
+    <EmptyState />
 
-    
+  ) : (
+
+    <>
+      <TodoList
+        todos={filteredTodos}
+        deleteTask={deleteTask}
+        toggleComplete={toggleComplete}
+        editingId={editingId}
+        editText={editText}
+        setEditText={setEditText}
+        startEditing={startEditing}
+        saveTask={saveTask}
+        cancelEditing={cancelEditing}
+      />
+
+      <Stats todos={todos} />
+    </>
+
+  )
+}
 
       </div>
     </main>
