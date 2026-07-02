@@ -59,6 +59,16 @@ function TodoItem({   todo,
       type="text"
       value={editText}
       onChange={(e) => setEditText(e.target.value)}
+       onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      saveTask(todo.id);
+    }
+
+    if (e.key === "Escape") {
+      cancelEditing();
+    }
+  }}
+  autoFocus
       className="
         bg-slate-800
         text-white
@@ -101,38 +111,65 @@ function TodoItem({   todo,
 
     <>
       <button
-        onClick={() => saveTask(todo.id)}
-        className="p-2 rounded-xl hover:bg-green-600 transition"
-      >
-        <Check size={18} />
-      </button>
-
+  onClick={() => saveTask(todo.id)}
+  className="
+    p-2
+    rounded-xl
+    hover:bg-green-600
+    transition-all
+    duration-300
+    hover:scale-110
+  "
+>
+  <Check size={18} />
+</button>
       <button
-        onClick={cancelEditing}
-        className="p-2 rounded-xl hover:bg-slate-500 transition"
-      >
-        <X size={18} />
-      </button>
+  onClick={cancelEditing}
+  className="
+    p-2
+    rounded-xl
+    hover:bg-slate-700
+    transition-all
+    duration-300
+    hover:scale-110
+  "
+>
+  <X size={18} />
+</button>
     </>
 
   ) : (
 
-    <button
-      onClick={() => startEditing(todo)}
-      className="p-2 rounded-xl hover:bg-violet-500 transition"
-    >
-      <Pencil size={18} />
-    </button>
+   <button
+  onClick={() => startEditing(todo)}
+  className="
+    p-2
+    rounded-xl
+    hover:bg-violet-600
+    transition-all
+    duration-300
+    hover:scale-110
+  "
+>
+  <Pencil size={18} />
+</button>
 
   )
 }
 
         <button
-          onClick={() => deleteTask(todo.id)}
-          className="p-2 rounded-xl hover:bg-red-500 transition"
-        >
-          <Trash2 size={18} />
-        </button>
+  onClick={() => deleteTask(todo.id)}
+  className="
+    p-2
+    rounded-xl
+    hover:bg-red-600
+    transition-all
+    duration-300
+    hover:scale-110
+  "
+>
+  <Trash2 size={18} />
+</button>
 
       </div>
 
