@@ -35,6 +35,27 @@ function App() {
       setTodos(updatetodos)
     };
 
+    const toggleComplete = (id) => {
+
+  const updatedTodos = todos.map((todo) => {
+
+    if (todo.id === id) {
+
+      return {
+        ...todo,
+        completed: !todo.completed,
+      };
+
+    }
+
+    return todo;
+
+  });
+
+  setTodos(updatedTodos);
+
+};
+
   return (
     <main className="min-h-screen bg-slate-950">
       <div className="max-w-4xl mx-auto py-16 px-6">
@@ -51,7 +72,8 @@ function App() {
 
         <TodoList 
     todos={todos}
-    deleteTask={deleteTask} />
+    deleteTask={deleteTask}
+    toggleComplete={toggleComplete} />
 
     
 

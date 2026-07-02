@@ -1,37 +1,58 @@
-import { Pencil, Trash2 } from "lucide-react";
+import {
+  Pencil,
+  Trash2,
+  Circle,
+  CheckCircle2,
+} from "lucide-react";
 
-function TodoItem({ todo,deleteTask }) {
-
+function TodoItem({ todo, deleteTask, toggleComplete }) {
   return (
-
     <div
-      className="
-      bg-slate-900
-      border
-      border-slate-800
-      rounded-2xl
-      p-5
-      flex
-      justify-between
-      items-center
-      transition-all
-      duration-300
-      hover:border-violet-500
-      hover:-translate-y-1
-      hover:shadow-xl
-      hover:shadow-violet-500/10
-      "
+      className={`
+        rounded-2xl
+        p-5
+        flex
+        justify-between
+        items-center
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:shadow-xl
+
+        ${
+          todo.completed
+            ? "border border-green-500 bg-green-500/5"
+            : "border border-slate-800 bg-slate-900 hover:border-violet-500 hover:shadow-violet-500/10"
+        }
+      `}
     >
+      {/* Left Side */}
 
-      <div>
+      <div className="flex items-center gap-4">
 
-        <h3 className="text-white text-lg font-semibold">
+        <button onClick={() => toggleComplete(todo.id)}>
 
+          {todo.completed ? (
+            <CheckCircle2 className="text-green-500" />
+          ) : (
+            <Circle className="text-slate-500" />
+          )}
+
+        </button>
+
+        <h3
+          className={`text-lg font-semibold ${
+            todo.completed
+              ? "line-through text-slate-500"
+              : "text-white"
+          }`}
+        >
           {todo.text}
-
         </h3>
 
       </div>
+
+      {/* Right Side */}
 
       <div className="flex gap-3">
 
@@ -40,23 +61,17 @@ function TodoItem({ todo,deleteTask }) {
           <Pencil size={18} />
 
         </button>
-      <button className="p-2 rounded-xl hover:bg-red-600 transition"
-        className="
-        p-2
-        rounded-xl
-        hover:bg-red-600
-        transition
-        "
-         onClick={() => deleteTask(todo.id)}
-         >
-          <Trash2 size={18} />
 
+        <button
+          onClick={() => deleteTask(todo.id)}
+          className="p-2 rounded-xl hover:bg-red-600 transition"
+        >
+          <Trash2 size={18} />
         </button>
 
       </div>
 
     </div>
-
   );
 }
 
